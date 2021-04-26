@@ -1,0 +1,176 @@
+input {
+    margin-right: 1rem;
+}
+
+i {
+    float: right;
+    cursor: pointer;
+
+}
+
+.flexbox {
+    display: flex;
+
+    justify-content: center;
+}
+
+/* *** AREA MESES *** */
+
+.meses {
+    flex-grow: 3;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.mes {
+    justify-self: center;
+
+    width: 300px;
+    height: 300px;
+
+    border: 2px solid rgba(48, 48, 211, 0.384);
+    border-radius: 5%;
+
+    text-align: center;
+}
+
+.dias-semana {
+    display: flex;
+
+    justify-content: space-evenly;
+}
+
+.dias-semana > div {
+    font-weight: bold;
+    color: rgb(78, 78, 78);
+}
+
+.dias-mes {
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.dias {
+    place-self: center;
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+}
+
+
+.hoje {
+    background-color: rgba(0, 0, 139, 0.26);
+    border-radius: 50%;
+}
+
+
+/* *** BARRA LATERAL DE EVENTOS *** */
+
+#barra-de-eventos {
+    width: 300px;
+
+    background-color: rgb(101, 149, 204);
+
+    padding: 15px;
+
+    border-radius: 16px;
+}
+
+#barra-de-eventos h2 {
+    margin-top: 0;
+}
+
+.fechar {
+    /* position: absolute; */
+    font-size: 1.5rem;
+}
+
+.adicionar-evento {
+    margin-bottom: 32px;
+}
+
+#titulo, #descricao {
+    width: 90%;
+}
+
+#descricao {
+    height: 4rem;
+}
+
+.horario-form {
+    width: 45%;
+
+    display: inline-block;
+
+    margin: 10px auto;
+}
+
+.horario-form input {
+    width: 3rem;
+}
+
+#adicionar-evento-btn {
+    width: 100%;
+}
+
+/* *** CONTAINER DE EVENTO *** */
+
+.area-eventos {
+    display: flex;
+
+    flex-direction: column;
+
+    position: relative;
+
+    margin-bottom: 32px;
+}
+
+.area-eventos h3 {
+    margin-top: 0;
+}
+
+.area-eventos button {
+    width: 100%;
+}
+
+
+.evento {
+    width: 100%;
+
+    margin-bottom: 24px;
+}
+
+.evento h3 {
+    margin-top: 0;
+}
+
+.evento button {
+    margin-bottom: 10px;
+}
+
+.evento-info {
+    font-size: 1rem;
+    width: 49%;
+}
+
+
+.descricao-evento {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.btn-apagar {
+    background-color: red;
+    color: white;
+}
+
+.alterar-evento input {
+    display: block;
+    margin-bottom: 12px;
+}

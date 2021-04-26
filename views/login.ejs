@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Calendario</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+    <h1>Bem vindo a minhAgenda</h1>
+
+    <div class="container">
+        <div class="container-elem">
+            <h2>Entrar</h2>
+            <form action="/login" method="POST">
+                <label for="login-name" class="block">Nome</label>
+                <input type="text" name="nome" id="login-name">
+                <label for="login-senha" class="block">Senha</label>
+                <input type="password" name="senha" id="login-senha">
+                <button type="submit" class="block">Logar</button>
+            </form>
+        </div>
+
+        <div class="container-elem">
+            <h2>Criar conta</h2>
+            <form action="/create" method="POST">
+                <label for="create-name" class="block">Nome</label>
+                <input type="text" name="nome" id="create-name">
+                <label for="create-senha" class="block">Senha</label>
+                <input type="password" name="senha" id="create-senha">
+                <button type="submit" class="block">Criar</button>
+            </form>
+        </div>
+
+    </div>
+
+
+    <script src="/scripts/script.js"></script>
+</body>
+
+</html>

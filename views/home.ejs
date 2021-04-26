@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home - Calendario</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet"> 
+    
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <h2>Eventos</h2>
+
+    <h1 id="ano">2021</h1>
+
+
+    <div class="flexbox">
+
+        <!-- Calendario -->
+
+        <div class="meses flexbox-item">
+            <div class="mes" id="00">
+                <h2>JANEIRO</h2>
+                <div class="dias-semana">
+                    <!-- DOM/SEG/TER/QUA/QUI/SEX/SAB -->
+                </div>
+
+                <div class="dias-mes">
+                    <!-- Dias do mes -->
+                </div>
+            </div>
+            <div class="mes" id="01">
+                <h2>FEVEREIRO</h2>
+                <div class="dias-semana">
+                    
+                </div>
+
+                <div class="dias-mes">
+                    
+                </div>
+            </div>
+            <div class="mes" id="02">
+                <h2>MARCO</h2>
+                <div class="dias-semana">
+                    
+                </div>
+
+                <div class="dias-mes">
+                    
+                </div>
+            </div>
+            <div class="mes" id="03">
+                <h2>ABRIL</h2>
+                <div class="dias-semana">
+                    
+                </div>
+
+                <div class="dias-mes">
+                    
+                </div>
+            </div>
+            <div class="mes" id="04">
+                <h2>MAIO</h2>
+                <div class="dias-semana">
+                    
+                </div>
+
+                <div class="dias-mes">
+                    
+                </div>
+            </div>
+            <div class="mes" id="05">
+                <h2>JUNHO</h2>
+                <div class="dias-semana">
+                    
+                </div>
+
+                <div class="dias-mes">
+                    
+                </div>
+            </div>
+            <div class="mes" id="06">
+                <h2>JULHO</h2>
+                <div class="dias-semana">
+                    
+                </div>
+
+                <div class="dias-mes">
+                    
+                </div>
+            </div>
+            <div class="mes" id="07">
+                <h2>AGOSTO</h2>
+                <div class="dias-semana">
+                    
+                </div>
+
+                <div class="dias-mes">
+                    
+                </div>
+            </div>
+            <div class="mes" id="08">
+                <h2>SETEMBRO</h2>
+                <div class="dias-semana">
+                    
+                </div>
+
+                <div class="dias-mes">
+                    
+                </div>
+            </div>
+            <div class="mes" id="09">
+                <h2>OUTUBRO</h2>
+                <div class="dias-semana">
+                    
+                </div>
+
+                <div class="dias-mes">
+                    
+                </div>
+            </div>
+            <div class="mes" id="10">
+                <h2>NOVEMBRO</h2>
+                <div class="dias-semana">
+                    
+                </div>
+
+                <div class="dias-mes">
+                    
+                </div>
+            </div>
+            <div class="mes" id="11">
+                <h2>DEZEMBRO</h2>
+                <div class="dias-semana">
+                    
+                </div>
+
+                <div class="dias-mes">
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de eventos -->
+
+        <div class="flexbox-item" id="barra-de-eventos" hidden>
+            <i class="fas fa-times fechar" onclick="fechaBarraEventos()"></i>
+            <h2>Eventos</h2>
+
+            <!-- Criar evento -->
+
+            <div class="adicionar-evento">
+                <i class="fas fa-plus" id="botao-extender-adicionar" onclick="toggleAdicionarEvento()"></i>
+                <h3>Adicionar evento</h3>
+
+                <div id="adicionar-evento-escondida" hidden>
+
+                    <form action="/user/<%= usuario.id %>/evento" method="POST">
+                        <input id="dia-evento" type="text" name="dia" value="" hidden>
+                        
+                        <label for="titulo" class="block">Titulo</label>
+                        <input type="text" id="titulo" name="titulo">
+                    
+                        <label for="descricao" class="block">Descrição</label>
+                        <input type="text" id="descricao" name="descricao">
+                
+
+                        <div class="horario-form">
+                            <label for="inicio">Inicio</label>
+                            <input type="text" name="inicio" id="inicio" class="horario">
+                        </div>
+
+                        <div class="horario-form">
+                            <label for="fim">Fim</label>
+                            <input type="text" name="fim" id="inicio" class="horario">
+                        </div>
+                        
+                
+                        <button type="submit" id="adicionar-evento-btn">Criar evento</button>
+                    </form>
+
+                </div>
+                
+            </div>
+            
+            <!-- Eventos -->
+
+            <section class="area-eventos">
+                <% eventos.forEach(evento => { %>
+
+                    <div class="evento" id="<%= "evento-" + evento.id%>">
+
+                        <i class="fas fa-caret-down" onclick="toggleDetalhesEvento(this.parentElement)"></i>
+                        <h3><%= evento.titulo %> </h3>
+    
+                        <div class="parte-evento-escondida" hidden>
+                            
+                            <div class="detalhes-evento">
+                                
+                                <div class="inline-block inicio evento-info">
+                                    Inicio: <%= evento.inicio.slice(0, 5) %> 
+                                </div>
+        
+                                <div class="inline-block fim evento-info">
+                                    Fim: <%= evento.fim.slice(0, 5) %> 
+                                </div>
+        
+                                <div class="inline-block descricao-evento">
+                                    <p><%= evento.descr %></p>
+                                </div>
+
+
+                            </div>
+
+    
+                            <form class="alterar-evento" action="/user/<%= usuario.id %>/evento/<%= evento.id %>/alterar" method="post" hidden>
+                                Titulo
+                                <input type="text" name="titulo" value="<%= evento.titulo %>">
+                                Inicio
+                                <input type="text" name="inicio" value="<%= evento.inicio.slice(0, 5) %>">
+                                Fim
+                                <input type="text" name="fim" value="<%= evento.fim.slice(0, 5) %>">
+                                Descricao
+                                <input type="text" name="descricao" value="<%= evento.descr %>">
+
+                                <button type="submit">Salvar</button>
+                            </form>
+                            
+                            <div>
+                                <button class="inline-block" onclick="abrirEditor(this.parentElement.parentElement)">Editar</button>
+                            </div>
+                            
+                            <div hidden>
+                                <button class="inline-block" onclick="fecharEditor(this.parentElement.parentElement)">Cancelar</button>
+                            </div>
+                            
+                            <form action="/user/<%= usuario.id %>/evento/<%= evento.id %>/delete" method="post">
+                                <button type="submit" class="inline-block">Apagar</button>
+                            </form>
+                        </div>
+
+
+                    </div>
+
+
+                    
+                <% }) %>
+            </section>
+            
+        </div>
+    </div>
+
+    <script>
+        const eventosJSON = ' <%= JSON.stringify(eventos)  %>';
+    </script>
+    <script src="/scripts/home.js"></script>
+</body>
+</html>

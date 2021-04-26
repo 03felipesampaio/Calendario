@@ -1,0 +1,16 @@
+body {
+    /* background-color: darkkhaki; */
+    font-family: 'Poppins', sans-serif;
+}
+
+body > h1 {
+    text-align: center;
+}
+
+.block {
+    display: block;
+}
+
+.inline-block {
+    display: inline-block;
+}
