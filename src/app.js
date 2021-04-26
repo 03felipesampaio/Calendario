@@ -11,7 +11,7 @@ app.use('/scripts', express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
 
 // Numero de camadas para a encriptacao de senha
-const saltRounds = 10;
+const saltRounds = 5;
 
 let usuario = undefined;
 
@@ -70,7 +70,7 @@ app.post('/create', (req, res) => {
 
     const senhaEncriptada = bcrypt.hashSync(senha, saltRounds);
 
-    const comando = 'INSERT INTO usuarios(nome, senha) VALUES ($1, $2)';
+    const comando = 'INSERT INTO usuarios(nome, senha) VALUES ($1, $2) RETURNING *';
     const parametros = [nome, senhaEncriptada];
 
     let mensagemErro = undefined;
@@ -83,7 +83,7 @@ app.post('/create', (req, res) => {
             return;
         }
 
-        
+        usuario = dbRes.rows[0];
         res.redirect('/user/' + usuario.id + '/evento');
     });
 });

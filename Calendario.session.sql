@@ -8,6 +8,7 @@ CREATE TABLE usuarios (
 
 
 -- @block
+DROP TABLE eventos;
 DROP TABLE usuarios;
 
 -- @block
