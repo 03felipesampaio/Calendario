@@ -2,6 +2,8 @@ input {
     margin-right: 1rem;
 }
 
+
+/* Icones em geral vao ser botoes */
 i {
     float: right;
     cursor: pointer;
@@ -52,6 +54,7 @@ i {
 .dias-mes {
     display: grid;
 
+    /* Possibilita a responsividade  */
     grid-template-columns: repeat(7, 1fr);
 }
 
@@ -87,9 +90,10 @@ i {
 }
 
 .fechar {
-    /* position: absolute; */
     font-size: 1.5rem;
 }
+
+/* *** Formulario adiocionar evento *** */
 
 .adicionar-evento {
     margin-bottom: 32px;
@@ -117,6 +121,13 @@ i {
 
 #adicionar-evento-btn {
     width: 100%;
+}
+
+/* *** Formulario alterar evento *** */
+
+.alterar-evento input {
+    display: block;
+    margin-bottom: 12px;
 }
 
 /* *** CONTAINER DE EVENTO *** */
@@ -159,7 +170,6 @@ i {
     width: 49%;
 }
 
-
 .descricao-evento {
     font-size: 1.4rem;
     font-weight: 600;
@@ -168,9 +178,4 @@ i {
 .btn-apagar {
     background-color: red;
     color: white;
-}
-
-.alterar-evento input {
-    display: block;
-    margin-bottom: 12px;
 }

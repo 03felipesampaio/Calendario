@@ -26,7 +26,7 @@ app.get('/user/:id', (req, res) => {
 // *** LOGIN ***
 
 app.get('/login', (req, res) => {
-    res.render('login');
+    res.render('login', {mensagem: null});
 });
 
 app.post('/login', (req, res) => {
@@ -34,6 +34,8 @@ app.post('/login', (req, res) => {
 
     const comando = 'SELECT * FROM usuarios WHERE nome = $1';
     const parametros = [nome];
+
+    let mensagemErro = undefined;
 
     db.query(comando, parametros, (err, dbRes) => {
         if (err) {
@@ -44,7 +46,8 @@ app.post('/login', (req, res) => {
         const { rows } = dbRes;
 
         if (rows.length === 0) {
-            console.log('Usuario nao encontrado');
+            mensagemErro = "Usuario não encontrado"
+            res.render("login", {mensagem: mensagemErro});
             return;
         }
 
@@ -53,9 +56,14 @@ app.post('/login', (req, res) => {
         if (bcrypt.compareSync(senha, usuarioEncontrado.senha)) {
             usuario = usuarioEncontrado;
             res.redirect('/user/' + usuario.id + '/evento');
+        } else {
+            mensagemErro = "Senha incorreta"
+            res.render("login", {mensagem: mensagemErro});
         }
     });
 });
+
+// Criar conta
 
 app.post('/create', (req, res) => {
     const { nome, senha } = req.body;
@@ -69,6 +77,8 @@ app.post('/create', (req, res) => {
 
     db.query(comando, parametros, (err, dbRes) => {
         if (err) {
+            mensagemErro = "Usuario ja existe, tente outro nome"
+            res.render("login", {mensagem: mensagemErro});
             console.error(err);
             return;
         }
@@ -119,13 +129,11 @@ app.post('/user/:id/evento', (req, res) => {
 
 // Altera evento
 app.post('/user/:id/evento/:eventoID/alterar', (req, res) => {
-    if(usuario.id !== req.params.id) res.render('home');
-    
     const { titulo, descricao, inicio, fim } = req.body;
-
+    
     const comando = "UPDATE eventos SET (titulo, descr, inicio, fim) = ($1, $2, $3, $4) WHERE id = $5";
     const parametros = [titulo, descricao, inicio, fim, req.params.eventoID];
-
+    
     db.query(comando, parametros, (err, dbRes) => {
         if (err) {
             console.error(err);

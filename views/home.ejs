@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/home.css">
 </head>
+
+
 <body>
     <h2>Eventos</h2>
 
@@ -165,7 +167,7 @@
 
                 <div id="adicionar-evento-escondida" hidden>
 
-                    <form action="/user/<%= usuario.id %>/evento" method="POST">
+                    <form action="/user/<%= usuario.id %>/evento"  onsubmit="return verificaHorarios(this)" method="POST">
                         <input id="dia-evento" type="text" name="dia" value="" hidden>
                         
                         <label for="titulo" class="block">Titulo</label>
@@ -182,7 +184,7 @@
 
                         <div class="horario-form">
                             <label for="fim">Fim</label>
-                            <input type="text" name="fim" id="inicio" class="horario">
+                            <input type="text" name="fim" id="fim" class="horario">
                         </div>
                         
                 
@@ -222,8 +224,8 @@
 
                             </div>
 
-    
-                            <form class="alterar-evento" action="/user/<%= usuario.id %>/evento/<%= evento.id %>/alterar" method="post" hidden>
+                            <!-- Fazer update de evento -->
+                            <form class="alterar-evento" action="/user/<%= usuario.id %>/evento/<%= evento.id %>/alterar" onsubmit="return verificaHorarios(this)" method="post" hidden>
                                 Titulo
                                 <input type="text" name="titulo" value="<%= evento.titulo %>">
                                 Inicio

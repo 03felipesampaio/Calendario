@@ -6,7 +6,6 @@ preencheCalendario();
 
 pegaDiaAtual();
 
-
 function preencheCalendario() {
 
     const meses = document.querySelectorAll('.mes');
@@ -100,6 +99,23 @@ function pegaDiaAtual() {
                              children[Number(dataAtualSeparada[2]) + Number(posInicialDasDiv) - 1];
 
     diaAtual.classList.add("class", "hoje");
+}
+
+function verificaHorarios(form) {
+    let inicio = form.inicio;
+    let fim = form.fim;
+
+    const dataQualquer = '2021 01 01';
+
+    inicio = new Date(`${dataQualquer} ${inicio.value}`);
+    fim = new Date(`${dataQualquer} ${fim.value}`);
+
+    if(inicio < fim) {
+        return true;
+    } else {
+        alert("Horarios invalidos");
+        return false;
+    }
 }
 
 function separaDataEmArray(data) {
